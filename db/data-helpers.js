@@ -36,6 +36,7 @@ const getters = files
     return {
       ...acc,
       [`get${Model.modelName}`]: query => Model.findOne(query).then(prepare),
+      //gets books or authors plural.
       [`get${Model.modelName}s`]: query => Model.find(query).then(prepareAll)
     };
   }, {});
