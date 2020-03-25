@@ -36,4 +36,20 @@ describe('book routes', () => {
         });
       });
   });
+
+  it('updates a book by id', async() => {
+    const book = await getBook();
+
+    return request(app)
+      .patch(`/api/v1/books/${book._id}`)
+      .send({ title: 'A Confederacy of Tdrumps', pages: 94  })
+      .then(res => {
+        expect(res.body).toEqual({
+          ...book,
+          title: 'A Confederacy of Tdrumps',
+          pages: 94
+        });
+      });
+  });
+
 });
